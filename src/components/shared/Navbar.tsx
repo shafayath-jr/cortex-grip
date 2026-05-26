@@ -25,7 +25,7 @@ export default function Navbar() {
 
   return (
     <header
-      className={`sticky top-0 z-50 w-full transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ${
         scrolled
           ? "border-b border-secondary-800/40 bg-secondary-900/60 backdrop-blur-xl py-3 shadow-[0_4px_30px_rgba(0,0,0,0.4)]"
           : "border-b border-transparent bg-transparent py-5"
@@ -128,7 +128,7 @@ export default function Navbar() {
               <Link
                 href="/get-started"
                 onClick={() => setIsOpen(false)}
-                className="flex items-center justify-center rounded-xl bg-gradient-to-r from-light-blue-400 to-secondary-300 px-5 py-2.5 text-sm font-semibold text-secondary-900 transition-all duration-300 hover:from-light-blue-300 hover:to-secondary-200 hover:shadow-[0_0_15px_rgba(149,144,239,0.25)] text-center"
+                className="flex items-center justify-center rounded-xl bg-linear-to-r from-light-blue-400 to-secondary-300 px-5 py-2.5 text-sm font-semibold text-secondary-900 transition-all duration-300 hover:from-light-blue-300 hover:to-secondary-200 hover:shadow-[0_0_15px_rgba(149,144,239,0.25)] text-center"
               >
                 Get Started Free
               </Link>
