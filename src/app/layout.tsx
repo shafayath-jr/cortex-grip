@@ -1,14 +1,15 @@
+import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Manrope, Stack_Sans_Notch } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const stack_sans_notch = Stack_Sans_Notch({
+  variable: "--font-stack-sans-notch",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const manrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin"],
 });
 
@@ -25,7 +26,13 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={cn(
+        "h-full",
+        "antialiased",
+        stack_sans_notch.variable,
+        manrope.variable,
+        "font-manrope",
+      )}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
