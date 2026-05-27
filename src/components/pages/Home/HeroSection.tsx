@@ -12,7 +12,7 @@ export default function HeroSection() {
   };
 
   return (
-    <div className="relative w-full min-h-screen flex items-center bg-[#050410] overflow-hidden">
+    <div className="relative w-full min-h-screen flex items-center bg-brand-primary-900 overflow-hidden">
       {/* Background Video */}
       <video
         autoPlay
@@ -26,10 +26,11 @@ export default function HeroSection() {
       </video>
 
       {/* Radial overlay to darken edges for premium contrast and readability */}
-      <div 
-        className="absolute inset-0 z-10 pointer-events-none" 
+      <div
+        className="absolute inset-0 z-10 pointer-events-none"
         style={{
-          background: "radial-gradient(circle at 30% 50%, rgba(5, 4, 16, 0.1) 0%, rgba(5, 4, 16, 0.7) 100%)"
+          background:
+            "radial-gradient(circle at 30% 50%, rgba(5, 4, 16, 0.1) 0%, rgba(5, 4, 16, 0.7) 100%)",
         }}
       />
 
@@ -44,10 +45,10 @@ export default function HeroSection() {
 
           {/* Subheadline */}
           <p className="mt-8 max-w-xl text-lg sm:text-xl text-light-blue-100/80 leading-relaxed font-manrope font-light">
-            CortexGrip makes it simple — search and register your domain, then let AI
-            build your website in minutes. No tech skills needed.
+            CortexGrip makes it simple — search and register your domain, then
+            let AI build your website in minutes. No tech skills needed.
           </p>
-          
+
           {/* Domain Search Form */}
           <form onSubmit={handleSearch} className="mt-14 w-full max-w-xl">
             <div className="relative">
@@ -59,7 +60,7 @@ export default function HeroSection() {
                 className="w-full bg-transparent border-b border-light-blue-500/30 focus:border-light-blue-500 text-white placeholder:text-light-blue-100/40 py-4 text-xl sm:text-2xl outline-none transition-colors duration-300 font-manrope font-light tracking-wide"
               />
             </div>
-            
+
             {/* Search Button */}
             <button
               type="submit"

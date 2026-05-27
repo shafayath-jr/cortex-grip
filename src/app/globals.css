@@ -51,27 +51,27 @@
   --font-manrope: var(--font-manrope);
   --font-stack-sans-notch: var(--font-stack-sans-notch);
 
-  --color-primary-900: #050410;
-  --color-primary-800: #0a0821;
-  --color-primary-700: #0e0d31;
-  --color-primary-600: #131142;
-  --color-primary-500: #181552;
-  --color-primary-400: #464475;
-  --color-primary-300: #747397;
-  --color-primary-200: #a3a1ba;
-  --color-primary-100: #d1d0dc;
-  --color-primary-50: #f6f6f8;
+  --color-brand-primary-900: #050410;
+  --color-brand-primary-800: #0a0821;
+  --color-brand-primary-700: #0e0d31;
+  --color-brand-primary-600: #131142;
+  --color-brand-primary-500: #181552;
+  --color-brand-primary-400: #464475;
+  --color-brand-primary-300: #747397;
+  --color-brand-primary-200: #a3a1ba;
+  --color-brand-primary-100: #d1d0dc;
+  --color-brand-primary-50: #f6f6f8;
 
-  --color-secondary-900: #100e2e;
-  --color-secondary-800: #201c5c;
-  --color-secondary-700: #2f2a89;
-  --color-secondary-600: #3f38b7;
-  --color-secondary-500: #4f46e5;
-  --color-secondary-400: #726bea;
-  --color-secondary-300: #9590ef;
-  --color-secondary-200: #b9b5f5;
-  --color-secondary-100: #dcdafa;
-  --color-secondary-50: #f6f6fe;
+  --color-brand-secondary-900: #100e2e;
+  --color-brand-secondary-800: #201c5c;
+  --color-brand-secondary-700: #2f2a89;
+  --color-brand-secondary-600: #3f38b7;
+  --color-brand-secondary-500: #4f46e5;
+  --color-brand-secondary-400: #726bea;
+  --color-brand-secondary-300: #9590ef;
+  --color-brand-secondary-200: #b9b5f5;
+  --color-brand-secondary-100: #dcdafa;
+  --color-brand-secondary-50: #f6f6fe;
 
   --color-light-blue-900: #212433;
   --color-light-blue-800: #424865;
