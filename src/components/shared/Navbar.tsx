@@ -31,7 +31,7 @@ export default function Navbar() {
           : "border-b border-transparent bg-transparent py-5"
       }`}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 md:px-12">
+      <div className="max-w-360 mx-auto flex items-center justify-between px-6 md:px-12 lg:px-20">
         {/* Logo */}
         <Link
           href="/"

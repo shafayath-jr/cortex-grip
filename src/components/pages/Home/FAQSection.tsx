@@ -46,8 +46,8 @@ export default function FAQSection() {
   };
 
   return (
-    <section className="w-full bg-white px-4 md:px-12 lg:px-20 py-16 font-manrope">
-      <div className="max-w-285 mx-auto flex flex-col lg:flex-row gap-16 xl:gap-24 lg:justify-between">
+    <section className="w-full bg-white py-16 font-manrope">
+      <div className="max-w-360 mx-auto px-4 md:px-12 lg:px-20 flex flex-col lg:flex-row gap-16 xl:gap-24 lg:justify-between">
         {/* Left Side: Title & Contact Card */}
         <div className="w-full lg:max-w-107.75 flex flex-col items-center">
           <div className="flex flex-col">

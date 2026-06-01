@@ -35,7 +35,7 @@ export default function HeroSection() {
       />
 
       {/* Hero Content */}
-      <div className="relative z-20 w-full max-w-7xl mx-auto px-6 md:px-12 pt-32 pb-20 flex flex-col justify-center min-h-screen">
+      <div className="relative z-20 w-full max-w-360 mx-auto px-6 md:px-12 lg:px-20 pt-32 pb-20 flex flex-col justify-center min-h-screen">
         <div className="max-w-3xl flex flex-col items-start text-left">
           {/* Main Headline */}
           <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white leading-[1.1] font-stack-sans-notch">
