@@ -1,4 +1,5 @@
 import FAQSection from "@/components/pages/Home/FAQSection";
+import Features from "@/components/pages/Home/Features";
 import HeroSection from "@/components/pages/Home/HeroSection";
 import PricingSection from "@/components/pages/Home/PricingSection";
 import StatsMergeSection from "@/components/pages/Home/StatsMergeSection";
@@ -10,6 +11,7 @@ export default function Home() {
       <HeroSection />
       <StatsMergeSection />
       <WhatYouCanDo />
+      <Features />
       <PricingSection />
       <FAQSection />
     </div>

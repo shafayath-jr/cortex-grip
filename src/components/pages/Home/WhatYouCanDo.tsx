@@ -1,9 +1,10 @@
 "use client";
 
+import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -36,7 +37,7 @@ export default function WhatYouCanDo() {
   const containerRef = useRef<HTMLDivElement>(null);
   const panelRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  useEffect(() => {
+  useGSAP(() => {
     const section = sectionRef.current;
     const container = containerRef.current;
     const panels = panelRefs.current.filter(Boolean) as HTMLDivElement[];

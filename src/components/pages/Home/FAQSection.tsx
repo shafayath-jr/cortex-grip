@@ -1,9 +1,14 @@
 "use client";
 
 import QuestionMark from "@/components/ui/icons/QuestionMark";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Minus, Plus } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
+import { useRef, useState } from "react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const faqs = [
   {
@@ -40,17 +45,71 @@ const faqs = [
 
 export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const sectionRef = useRef<HTMLElement>(null);
+  const leftContentRef = useRef<HTMLDivElement>(null);
+  const contactCardRef = useRef<HTMLDivElement>(null);
+  const faqsRef = useRef<(HTMLDivElement | null)[]>([]);
+
+  useGSAP(
+    () => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+        },
+      });
+
+      if (leftContentRef.current) {
+        tl.from(leftContentRef.current.children, {
+          y: 30,
+          opacity: 0,
+          duration: 0.6,
+          stagger: 0.1,
+          ease: "power3.out",
+        });
+      }
+
+      if (contactCardRef.current) {
+        tl.from(
+          contactCardRef.current,
+          {
+            y: 30,
+            opacity: 0,
+            duration: 0.6,
+            ease: "power3.out",
+          },
+          "-=0.4"
+        );
+      }
+
+      const faqElements = faqsRef.current.filter(Boolean);
+      if (faqElements.length > 0) {
+        tl.from(
+          faqElements,
+          {
+            x: 30,
+            opacity: 0,
+            duration: 0.6,
+            stagger: 0.1,
+            ease: "power3.out",
+          },
+          "-=0.6"
+        );
+      }
+    },
+    { scope: sectionRef }
+  );
 
   const toggleFAQ = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
   return (
-    <section className="w-full bg-white py-16 font-manrope">
+    <section ref={sectionRef} className="w-full bg-white py-16 font-manrope overflow-hidden">
       <div className="max-w-360 mx-auto px-4 md:px-12 lg:px-20 flex flex-col lg:flex-row gap-16 xl:gap-24 lg:justify-between">
         {/* Left Side: Title & Contact Card */}
         <div className="w-full lg:max-w-107.75 flex flex-col items-center">
-          <div className="flex flex-col">
+          <div ref={leftContentRef} className="flex flex-col">
             <h2 className="text-4xl sm:text-5xl font-medium text-brand-primary-500 font-stack-sans-notch leading-15 tracking-normal">
               Questions we get asked a lot
             </h2>
@@ -61,7 +120,7 @@ export default function FAQSection() {
           </div>
 
           {/* Contact Card */}
-          <div className="relative overflow-hidden rounded-[13px] bg-brand-primary-600 p-7  shadow-xl max-w-107.75 w-full">
+          <div ref={contactCardRef} className="relative overflow-hidden rounded-[13px] bg-brand-primary-600 p-7  shadow-xl max-w-107.75 w-full">
             {/* Background Faded Question Mark */}
             <div className="absolute bottom-3 right-4 h-34.25 w-auto pointer-events-none z-0">
               <QuestionMark className="h-full w-auto" />
@@ -92,6 +151,9 @@ export default function FAQSection() {
             return (
               <div
                 key={index}
+                ref={(el) => {
+                  faqsRef.current[index] = el;
+                }}
                 className="border-b border-[#E2E8F0] py-6 first:pt-0 last:border-b-0"
               >
                 {/* Header / Question button */}

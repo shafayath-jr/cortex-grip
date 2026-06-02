@@ -4,7 +4,12 @@ import CheckVerified from "@/components/ui/icons/CheckVerified";
 import CircleCheckBox from "@/components/ui/icons/CircleCheckBox";
 import CircleClose from "@/components/ui/icons/CircleClose";
 import SmallLineStroke from "@/components/ui/icons/SmallLineStroke";
-import { useState } from "react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useRef, useState } from "react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const plans = [
   {
@@ -64,11 +69,66 @@ const plans = [
 
 export default function PricingSection() {
   const [isAnnual, setIsAnnual] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const bottomRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(
+    () => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+        },
+      });
+
+      if (headerRef.current) {
+        tl.from(headerRef.current.children, {
+          y: 30,
+          opacity: 0,
+          duration: 0.6,
+          stagger: 0.1,
+          ease: "power3.out",
+        });
+      }
+
+      const cards = cardsRef.current.filter(Boolean);
+      if (cards.length > 0) {
+        tl.from(
+          cards,
+          {
+            y: 50,
+            opacity: 0,
+            duration: 0.8,
+            stagger: 0.2,
+            ease: "power3.out",
+          },
+          "-=0.4",
+        );
+      }
+
+      if (bottomRef.current) {
+        tl.from(
+          bottomRef.current.children,
+          {
+            y: 20,
+            opacity: 0,
+            duration: 0.5,
+            stagger: 0.1,
+            ease: "power2.out",
+          },
+          "-=0.4",
+        );
+      }
+    },
+    { scope: sectionRef },
+  );
 
   return (
-    <section className="w-full bg-brand-secondary-50 py-17.5 font-manrope">
+    <section ref={sectionRef} className="w-full bg-brand-secondary-50 py-17.5 font-manrope overflow-hidden">
       <div className="max-w-360 mx-auto px-6 md:px-12 lg:px-20">
-        <div className="flex flex-col items-center gap-4">
+        <div ref={headerRef} className="flex flex-col items-center gap-4">
           {/* Top Badge */}
           <div className="flex items-center gap-2.5 rounded-[4px] border border-brand-primary-300 py-2 px-3 w-fit mx-auto bg-white/50">
             <SmallLineStroke className="size-4.5" />
@@ -123,7 +183,7 @@ export default function PricingSection() {
 
         {/* Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16 items-stretch">
-          {plans.map((plan) => {
+          {plans.map((plan, index) => {
             const price = isAnnual
               ? (plan.monthlyPrice * 0.8).toFixed(2)
               : plan.monthlyPrice;
@@ -131,6 +191,9 @@ export default function PricingSection() {
             return (
               <div
                 key={plan.name}
+                ref={(el) => {
+                  cardsRef.current[index] = el;
+                }}
                 className={`relative rounded-[16px] bg-white p-6 pb-10 flex flex-col h-full shadow-lg ${
                   plan.isPopular
                     ? "border-2 border-brand-secondary-100 bg-white shadow-[2px_4px_14px_0_rgba(79,70,229,0.22)]"
@@ -208,7 +271,7 @@ export default function PricingSection() {
         </div>
 
         {/* Bottom checks */}
-        <div className="flex flex-wrap justify-evenly gap-x-8 gap-y-4 mt-8">
+        <div ref={bottomRef} className="flex flex-wrap justify-evenly gap-x-8 gap-y-4 mt-8">
           {[
             "No credit card to start",
             "Cancel anytime",
