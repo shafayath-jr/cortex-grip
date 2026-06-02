@@ -78,7 +78,7 @@ export default function FAQSection() {
             duration: 0.6,
             ease: "power3.out",
           },
-          "-=0.4"
+          "-=0.4",
         );
       }
 
@@ -93,11 +93,11 @@ export default function FAQSection() {
             stagger: 0.1,
             ease: "power3.out",
           },
-          "-=0.6"
+          "-=0.6",
         );
       }
     },
-    { scope: sectionRef }
+    { scope: sectionRef },
   );
 
   const toggleFAQ = (index: number) => {
@@ -105,7 +105,10 @@ export default function FAQSection() {
   };
 
   return (
-    <section ref={sectionRef} className="w-full bg-white py-16 font-manrope overflow-hidden">
+    <section
+      ref={sectionRef}
+      className="w-full bg-white py-16 font-manrope overflow-hidden"
+    >
       <div className="max-w-360 mx-auto px-4 md:px-12 lg:px-20 flex flex-col lg:flex-row gap-16 xl:gap-24 lg:justify-between">
         {/* Left Side: Title & Contact Card */}
         <div className="w-full lg:max-w-107.75 flex flex-col items-center">
@@ -120,7 +123,10 @@ export default function FAQSection() {
           </div>
 
           {/* Contact Card */}
-          <div ref={contactCardRef} className="relative overflow-hidden rounded-[13px] bg-brand-primary-600 p-7  shadow-xl max-w-107.75 w-full">
+          <div
+            ref={contactCardRef}
+            className="relative overflow-hidden rounded-[13px] bg-brand-primary-600 p-7  shadow-xl max-w-107.75 w-full"
+          >
             {/* Background Faded Question Mark */}
             <div className="absolute bottom-3 right-4 h-34.25 w-auto pointer-events-none z-0">
               <QuestionMark className="h-full w-auto" />

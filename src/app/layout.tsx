@@ -1,5 +1,6 @@
 import Footer from "@/components/shared/Footer";
 import Navbar from "@/components/shared/Navbar";
+import SmoothScrolling from "@/components/shared/SmoothScrolling";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Manrope, Stack_Sans_Notch } from "next/font/google";
@@ -37,9 +38,11 @@ export default function RootLayout({
       )}
     >
       <body className="min-h-full flex flex-col text-slate-100 selection:bg-secondary-500/30 selection:text-white">
-        <Navbar />
-        <main className="flex-1 flex flex-col">{children}</main>
-        <Footer />
+        <SmoothScrolling>
+          <Navbar />
+          <main className="flex-1 flex flex-col">{children}</main>
+          <Footer />
+        </SmoothScrolling>
       </body>
     </html>
   );
